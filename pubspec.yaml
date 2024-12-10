@@ -1,0 +1,64 @@
+name: NCS
+description: A new Flutter project.
+publish_to: 'none'
+
+# 개발 버전
+version: 1.0.3+12
+
+environment:
+  sdk: '>=3.5.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  flutter_localizations:
+    sdk: flutter
+
+  # 폰트 라이브러리
+  google_fonts: ^5.1.0
+
+  get: ^4.6.5
+  dio: ^5.1.2
+  div: ^0.0.2
+  intl: ^0.19.0
+  retrofit: ^4.0.1
+  pluto_grid: ^8.0.0
+  device_info: ^2.0.3 # 기기정보
+  fluttertoast: ^8.2.2
+  url_launcher: ^6.1.12
+  json_annotation: ^4.8.1
+  percent_indicator: ^4.2.3
+  package_info_plus: ^4.2.0 # 버전관리
+  permission_handler: ^11.0.1 # 권한
+
+  # 파일 다운로드를 위한 라이브러리
+  open_file: ^3.2.1
+  path_provider: ^2.0.11
+  android_intent: ^2.0.2
+  shared_preferences: ^2.0.6
+
+  flutter_svg: ^2.0.7
+  flutter_native_select: ^1.0.1
+  flutter_secure_storage : ^8.0.0
+  flutter_local_notifications: ^15.1.0+1 # 알림
+
+  # 파이어베이스
+  firebase_core: ^2.15.1
+  firebase_messaging: ^14.6.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.1
+  retrofit_generator: ^7.0.1
+  build_runner: ^2.4.5
+  json_serializable: ^6.7.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/icons/
+    - assets/logos/
