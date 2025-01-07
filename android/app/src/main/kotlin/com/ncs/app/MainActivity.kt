@@ -1,4 +1,4 @@
-package com.example.ncs
+package com.ncs.app
 
 import io.flutter.embedding.android.FlutterActivity
 

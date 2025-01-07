@@ -1,5 +1,5 @@
-name: NCS
-description: A new Flutter project.
+name: ncs
+description: NCS project.
 publish_to: 'none'
 
 # 개발 버전
@@ -13,52 +13,59 @@ dependencies:
     sdk: flutter
 
   flutter_localizations:
-    sdk: flutter
+    sdk: flutter # 다국어 지원
 
-  # 폰트 라이브러리
-  google_fonts: ^5.1.0
+  # 상태 관리 및 의존성 주입
+  get: ^4.6.6 # 간단한 상태 관리 및 의존성 주입 도구
 
-  get: ^4.6.5
-  dio: ^5.1.2
-  div: ^0.0.2
-  intl: ^0.19.0
-  retrofit: ^4.0.1
-  pluto_grid: ^8.0.0
-  device_info: ^2.0.3 # 기기정보
-  fluttertoast: ^8.2.2
-  url_launcher: ^6.1.12
-  json_annotation: ^4.8.1
-  percent_indicator: ^4.2.3
-  package_info_plus: ^4.2.0 # 버전관리
-  permission_handler: ^11.0.1 # 권한
+  # 네트워크 통신
+  dio: ^5.7.0 # HTTP 클라이언트
+  retrofit: ^4.4.2 # REST API 호출을 위한 클라이언트
 
-  # 파일 다운로드를 위한 라이브러리
-  open_file: ^3.2.1
-  path_provider: ^2.0.11
-  android_intent: ^2.0.2
-  shared_preferences: ^2.0.6
+  # UI 라이브러리
+  intl: ^0.19.0 # 날짜, 숫자 등의 국제화 지원
+  pluto_grid: ^8.0.0 # 데이터 테이블 및 그리드 UI
+  flutter_svg: ^2.0.7 # SVG 이미지 지원
 
-  flutter_svg: ^2.0.7
-  flutter_native_select: ^1.0.1
-  flutter_secure_storage : ^8.0.0
-  flutter_local_notifications: ^15.1.0+1 # 알림
+  # 기기 및 권한 관리
+  device_info_plus: ^11.2.0 # 기기 정보 제공
+  permission_handler: ^11.3.1 # 권한 요청 및 관리
+  android_intent_plus: ^5.2.1 # 안드로이드
 
-  # 파이어베이스
-  firebase_core: ^2.15.1
-  firebase_messaging: ^14.6.6
+  # 로컬 저장소
+  shared_preferences: ^2.0.6 # 간단한 로컬 데이터 저장
+  flutter_secure_storage: ^8.0.0 # 보안 데이터 저장소
+
+  # 파일 및 경로 관리
+  open_file: ^3.2.1 # 파일 열기
+  path_provider: ^2.0.11 # 플랫폼 경로 제공
+
+  # 알림 기능
+  flutter_local_notifications: ^18.0.1 # 로컬 알림 지원
+  firebase_messaging: ^15.1.6 # 클라우드 메세지
+  firebase_messaging_web: ^3.9.5 # 웹에서 푸시 알림 지원 (Firebase)
+
+  # Firebase 통합
+  firebase_core: ^3.9.0 # Firebase 기본 SDK
+
+  # 유틸리티
+  fluttertoast: ^8.2.10 # Toast 메시지 표시
+  json_annotation: ^4.9.0 # JSON 직렬화 지원
+  package_info_plus: ^8.1.2 # 앱 버전 정보 제공
 
 dev_dependencies:
   flutter_test:
-    sdk: flutter
+    sdk: flutter # 기본 테스트 프레임워크
 
-  flutter_lints: ^2.0.1
-  retrofit_generator: ^7.0.1
-  build_runner: ^2.4.5
-  json_serializable: ^6.7.0
+  flutter_lints: ^2.0.1 # 코드 스타일 가이드 및 정적 분석
+
+  # 코드 생성 도구
+  retrofit_generator: ^7.0.1 # Retrofit 기반 코드 생성
+  build_runner: ^2.4.5 # 코드 생성 실행
+  json_serializable: ^6.7.0 # JSON 직렬화용 코드 생성
 
 flutter:
   uses-material-design: true
 
   assets:
-    - assets/icons/
-    - assets/logos/
+    - assets/fonts/ # 폰트
