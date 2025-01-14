@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:ncs/app/theme/app_color.dart';
 import 'package:ncs/comm/setting/screen_util_setting.dart';
+import 'package:ncs/features/notifications/presentation/pages/alarm_main.dart';
 
 class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CommonAppBar({super.key});
@@ -9,7 +11,7 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final double nowonHeight = ScreenUtil.heightPercentage(0.04);
-    final double symbolHeight = ScreenUtil.heightPercentage(0.03);
+    final double symbolHeight = ScreenUtil.heightPercentage(0.035);
 
     return Container(
       decoration: BoxDecoration(
@@ -37,9 +39,14 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20),
-            child: SvgPicture.asset(
-              'assets/icons/alarm.svg',
-              height: symbolHeight,
+            child: IconButton(
+              icon: SvgPicture.asset(
+                'assets/icons/alarm.svg',
+                height: symbolHeight,
+              ),
+              onPressed: (){
+                Get.to(() => const AlarmMain());
+              },
             ),
           ),
         ],
