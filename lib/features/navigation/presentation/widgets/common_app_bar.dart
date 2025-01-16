@@ -5,16 +5,21 @@ import 'package:ncs/app/theme/app_color.dart';
 import 'package:ncs/comm/setting/screen_util_setting.dart';
 import 'package:ncs/features/notifications/presentation/pages/alarm_main.dart';
 
-class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
+class CommonAppBar extends StatelessWidget implements PreferredSizeWidget{
   const CommonAppBar({super.key});
 
   @override
+  Size get preferredSize => const Size.fromHeight(105);
+
+  @override
   Widget build(BuildContext context) {
-    final double nowonHeight = ScreenUtil.heightPercentage(0.04);
-    final double symbolHeight = ScreenUtil.heightPercentage(0.035);
+    final double nowonHeight = ScreenUtil.heightPercentage(0.045);
+    final double symbolHeight = ScreenUtil.heightPercentage(0.04);
 
     return Container(
+      height: preferredSize.height,
       decoration: BoxDecoration(
+        color: AppColor.input,
         boxShadow: [
           BoxShadow(
             color: AppColor.lightGray.withOpacity(0.15),
@@ -23,38 +28,38 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
         ],
       ),
-      child: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 15),
-          child: SvgPicture.asset(
-            'assets/icons/symbol.svg',
-          ),
-        ),
-        title: SvgPicture.asset(
-          'assets/icons/nowon.svg',
-          height: nowonHeight,
-        ),
-        centerTitle: true, // 제목 중앙 정렬
-        backgroundColor: AppColor.input,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 20),
-            child: IconButton(
-              icon: SvgPicture.asset(
-                'assets/icons/alarm.svg',
-                height: symbolHeight,
-              ),
-              onPressed: (){
-                Get.to(() => const AlarmMain());
-              },
+      child: Padding(
+        padding: const EdgeInsets.only(top: 20),
+        child: AppBar(
+          leading: Padding(
+            padding: const EdgeInsets.only(left: 15),
+            child: SvgPicture.asset(
+              'assets/icons/symbol.svg',
             ),
           ),
-        ],
-        elevation: 0, // AppBar 자체의 그림자 제거
+          title: SvgPicture.asset(
+            'assets/icons/nowon.svg',
+            height: nowonHeight,
+          ),
+          centerTitle: true, // 제목 중앙 정렬
+          backgroundColor: AppColor.input,
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 15),
+              child: IconButton(
+                icon: SvgPicture.asset(
+                  'assets/icons/alarm.svg',
+                  height: symbolHeight,
+                ),
+                onPressed: (){
+                  Get.to(() => const AlarmMain());
+                },
+              ),
+            ),
+          ],
+          elevation: 0, // AppBar 자체의 그림자 제거
+        ),
       ),
     );
   }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

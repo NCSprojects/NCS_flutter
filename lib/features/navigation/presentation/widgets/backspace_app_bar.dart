@@ -8,12 +8,16 @@ class BackspaceAppBar extends StatelessWidget implements PreferredSizeWidget {
   const BackspaceAppBar({super.key});
 
   @override
+  Size get preferredSize => const Size.fromHeight(105);
+
+  @override
   Widget build(BuildContext context) {
-    final double nowonHeight = ScreenUtil.heightPercentage(0.04);
-    final double arrowHeight = ScreenUtil.heightPercentage(0.002);
+    final double nowonHeight = ScreenUtil.heightPercentage(0.045);
 
     return Container(
+      height: preferredSize.height,
       decoration: BoxDecoration(
+        color: AppColor.input,
         boxShadow: [
           BoxShadow(
             color: AppColor.lightGray.withOpacity(0.15),
@@ -22,12 +26,12 @@ class BackspaceAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
         ],
       ),
-      child: AppBar(
-        scrolledUnderElevation: 0, //스크롤 그림자 없애기
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 15),
-          child: SizedBox(
-            height: arrowHeight,
+      child: Padding(
+        padding: const EdgeInsets.only(top: 20),
+        child: AppBar(
+          scrolledUnderElevation: 0, //스크롤 그림자 없애기
+          leading: Padding(
+            padding: const EdgeInsets.only(left: 15),
             child: IconButton(
               icon: SvgPicture.asset(
                 'assets/icons/backspace.svg',
@@ -37,18 +41,15 @@ class BackspaceAppBar extends StatelessWidget implements PreferredSizeWidget {
               },
             ),
           ),
+          title: SvgPicture.asset(
+            'assets/icons/nowon.svg',
+            height: nowonHeight,
+          ),
+          centerTitle: true, // 제목 중앙 정렬
+          backgroundColor: AppColor.input,
+          elevation: 0, // AppBar 자체의 그림자 제거
         ),
-        title: SvgPicture.asset(
-          'assets/icons/nowon.svg',
-          height: nowonHeight,
-        ),
-        centerTitle: true, // 제목 중앙 정렬
-        backgroundColor: AppColor.input,
-        elevation: 0, // AppBar 자체의 그림자 제거
       ),
     );
   }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
