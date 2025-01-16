@@ -8,6 +8,8 @@ class NCSText extends StatelessWidget {
   final double fontSize;
   final FontWeight fontWeight;
   final TextAlign? textAlign;
+  final int? maxLines; // 최대 줄 수
+  final TextOverflow? overflow; // 오버플로우 스타일
 
   const NCSText({
     super.key,
@@ -16,6 +18,8 @@ class NCSText extends StatelessWidget {
     required this.fontWeight,
     this.color = AppColor.blue,
     this.textAlign,
+    this.maxLines,
+    this.overflow,
   });
 
   @override
@@ -28,6 +32,9 @@ class NCSText extends StatelessWidget {
         fontSize: ScreenUtil.fontSize(fontSize),
         fontWeight: fontWeight,
       ),
+      textAlign: textAlign,
+      maxLines: maxLines,
+      overflow: overflow,
     );
   }
 }

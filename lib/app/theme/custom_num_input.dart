@@ -12,8 +12,7 @@ class CustomNumInput {
     required FontWeight fontWeight,
     String? Function(String?)? validator,
     EdgeInsetsGeometry contentPadding = const EdgeInsets.all(8.0),
-    Color borderColor = AppColor.lightGray,
-    Color focusedBorderColor = AppColor.blue,
+    Color borderColor = Colors.transparent,
     Color backgroundColor = AppColor.input,
   }) {
     return TextFormField(
@@ -30,7 +29,7 @@ class CustomNumInput {
             text: text,
             fontSize: fontSize,
             fontWeight: fontWeight,
-            color: AppColor.blue,
+            color: AppColor.lightGray,
           ),
         ),
         filled: true,
@@ -45,7 +44,11 @@ class CustomNumInput {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(5),
-          borderSide: BorderSide(color: focusedBorderColor, width: 0.5),
+          borderSide: BorderSide(color: borderColor, width: 0.2),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(5),
+          borderSide: BorderSide(color: borderColor, width: 0.2),
         ),
       ),
       validator: validator ??
