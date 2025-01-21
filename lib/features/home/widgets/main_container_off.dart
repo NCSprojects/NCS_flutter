@@ -17,7 +17,7 @@ class MainContainerOff extends StatelessWidget {
 
     return Container(
       width: ScreenUtil.widthPercentage(0.8),
-      height: ScreenUtil.heightPercentage(0.25),
+      height: ScreenUtil.heightPercentage(0.3),
       decoration: NCSshadow.custom(
         color: Colors.white,
         borderRadius: 15,
@@ -27,12 +27,12 @@ class MainContainerOff extends StatelessWidget {
         children: [
           const NCSText(
             text: '입장 번호 입력하기',
-            fontSize: 18,
+            fontSize: 20,
             fontWeight: FontWeight.w600,
           ),
           const NCSText(
             text: '관람권 결제 후 받은 번호 4자리를 입력하고 예약하세요.',
-            fontSize: 8,
+            fontSize: 10,
             fontWeight: FontWeight.w300,
           ),
           Padding(
@@ -40,14 +40,24 @@ class MainContainerOff extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(
-                    height: ScreenUtil.heightPercentage(0.04),
+                    height: ScreenUtil.heightPercentage(0.045),
                     child: CustomNumInput.numberInputField(
-                      context: context, controller: numberController, text: "안내받은 번호 4자리를 입력해주세요.", fontSize: 8, fontWeight: FontWeight.w300, )),
-                const SizedBox(height: 10,),
+                      context: context,
+                      controller: numberController,
+                      text: "안내받은 번호 4자리를 입력해주세요.",
+                      fontSize: 10,
+                      fontWeight: FontWeight.w400,
+                    )),
+                const SizedBox(
+                  height: 10,
+                ),
                 SizedBox(
-                  height: ScreenUtil.heightPercentage(0.04),
+                  height: ScreenUtil.heightPercentage(0.045),
                   child: CustomButton.customButton(
-                      text: "확인", onPressed: () {}, fontSize: 12, borderRadius: 5),
+                      text: "확인",
+                      onPressed: () {},
+                      fontSize: 12,
+                      borderRadius: 5),
                 )
               ],
             ),
