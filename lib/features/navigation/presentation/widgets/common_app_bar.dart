@@ -14,7 +14,7 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget{
   @override
   Widget build(BuildContext context) {
     final double nowonHeight = ScreenUtil.heightPercentage(0.045);
-    final double symbolHeight = ScreenUtil.heightPercentage(0.04);
+    final double symbolHeight = ScreenUtil.heightPercentage(0.03710);
 
     return Container(
       height: preferredSize.height,
@@ -38,9 +38,9 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget{
             ),
           ),
           title: SvgPicture.asset(
-            'assets/icons/nowon.svg',
-            height: nowonHeight,
-          ),
+              'assets/icons/nowon.svg',
+              height: nowonHeight,
+            ),
           centerTitle: true, // 제목 중앙 정렬
           backgroundColor: AppColor.input,
           actions: [
