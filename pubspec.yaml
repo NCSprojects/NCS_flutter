@@ -16,7 +16,8 @@ dependencies:
     sdk: flutter # 다국어 지원
 
   # 상태 관리 및 의존성 주입
-  get: ^4.6.6 # 간단한 상태 관리 및 의존성 주입 도구
+  get: ^4.6.6 # 의존성 주입 및 라우팅
+  flutter_bloc: ^8.1.6 # 상태 관리
 
   # 네트워크 통신
   dio: ^5.7.0 # HTTP 클라이언트
@@ -69,3 +70,5 @@ flutter:
 
   assets:
     - assets/fonts/ # 폰트
+    - assets/icons/ # icon.svg
+    - assets/images/ # 포스터
