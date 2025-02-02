@@ -3,8 +3,8 @@ import 'package:ncs/app/theme/custom_box_shadow.dart';
 import 'package:ncs/app/theme/custom_text_style.dart';
 import 'package:ncs/comm/setting/screen_util_setting.dart';
 
-class ExhibitContainer extends StatelessWidget {
-  const ExhibitContainer({
+class ExhibitContainerStyle extends StatelessWidget {
+  const ExhibitContainerStyle({
     super.key,
     required this.title,
     required this.date,
