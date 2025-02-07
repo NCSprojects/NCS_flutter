@@ -8,7 +8,10 @@ class BackspaceAppBar extends StatelessWidget implements PreferredSizeWidget {
   const BackspaceAppBar({super.key});
 
   @override
-  Size get preferredSize => const Size.fromHeight(105);
+  Size get preferredSize {
+    final double calculatedHeight = ScreenUtil.heightPercentage(0.15);
+    return Size.fromHeight(calculatedHeight);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +32,7 @@ class BackspaceAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: Padding(
         padding: const EdgeInsets.only(top: 20),
         child: AppBar(
-          scrolledUnderElevation: 0, //스크롤 그림자 없애기
+          scrolledUnderElevation: 0,
           leading: Padding(
             padding: const EdgeInsets.only(left: 15),
             child: IconButton(

@@ -87,7 +87,7 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       create: (_) => BottomNavCubit(),
       child: GetMaterialApp(
-        title: 'Demo',
+        title: 'NCS-Project',
         initialRoute: '/home',
         routes: NavigatorNamed().named,
         debugShowCheckedModeBanner: false,

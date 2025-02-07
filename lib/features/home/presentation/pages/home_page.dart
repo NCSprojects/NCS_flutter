@@ -13,7 +13,7 @@ class HomePage extends StatelessWidget {
       home: Scaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: AppColor.back,
-        body: Center(child: MainContainerOff(title: '입장권',))
+        body: Center(child: MainContainerOff())
       ),
     );
   }

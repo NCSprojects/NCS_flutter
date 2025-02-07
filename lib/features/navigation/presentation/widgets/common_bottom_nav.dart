@@ -22,6 +22,7 @@ class CommonBottomNav extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double navSize = ScreenUtil.heightPercentage(0.115);
     final double itemSize = ScreenUtil.heightPercentage(0.045);
     final double fontSize = ScreenUtil.fontSize(10);
     return BlocBuilder<BottomNavCubit, int>(
@@ -37,6 +38,7 @@ class CommonBottomNav extends StatelessWidget {
             splashFactory: NoSplash.splashFactory, // 물결 효과 제거
             highlightColor: Colors.transparent,),
             child: Container(
+              height: navSize,
               decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
@@ -72,14 +74,14 @@ class CommonBottomNav extends StatelessWidget {
                 items: [
                   BottomNavigationBarItem(
                     icon: Padding(
-                      padding: const EdgeInsets.fromLTRB(3, 5, 3, 5),
+                      padding: const EdgeInsets.fromLTRB(3, 5, 3, 10),
                       child: SvgPicture.asset(
                         'assets/icons/Home_off.svg', // 선택되지 않은 아이콘
                         height: itemSize,
                       ),
                     ),
                     activeIcon: Padding(
-                      padding: const EdgeInsets.fromLTRB(3, 5, 3, 5),
+                      padding: const EdgeInsets.fromLTRB(3, 5, 3, 10),
                       child: SvgPicture.asset(
                         'assets/icons/Home_on.svg', // 선택된 아이콘
                         height: itemSize,

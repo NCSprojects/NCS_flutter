@@ -14,6 +14,8 @@ class CustomNumInput {
     EdgeInsetsGeometry contentPadding = const EdgeInsets.all(8.0),
     Color borderColor = Colors.transparent,
     Color backgroundColor = AppColor.input,
+    required void Function(String inputText) onChanged,
+
   }) {
     return TextFormField(
       controller: controller,
@@ -51,16 +53,7 @@ class CustomNumInput {
           borderSide: BorderSide(color: borderColor, width: 0.2),
         ),
       ),
-      validator: validator ??
-              (value) {
-            if (value == null || value.isEmpty) {
-              return "Please enter a number.";
-            }
-            if (double.tryParse(value) == null) {
-              return "Enter a valid number.";
-            }
-            return null;
-          },
+      validator: validator
     );
   }
 }
