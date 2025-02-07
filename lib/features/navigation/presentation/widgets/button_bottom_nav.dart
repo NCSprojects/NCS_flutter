@@ -3,7 +3,16 @@ import 'package:ncs/app/theme/custom_button.dart';
 import 'package:ncs/comm/setting/screen_util_setting.dart';
 
 class ButtonBottomNav extends StatelessWidget {
-  const ButtonBottomNav({super.key});
+  final List<Map<String, dynamic>> reservationData;
+  final String buttonTitle;
+  final VoidCallback onPressedCallback;
+
+  const ButtonBottomNav({
+    Key? key,
+    required this.reservationData,
+    required this.buttonTitle,
+    required this.onPressedCallback,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,8 +20,8 @@ class ButtonBottomNav extends StatelessWidget {
 
     return Theme(
       data: Theme.of(context).copyWith(
-        splashFactory: NoSplash.splashFactory, // 클릭 효과 제거
-        highlightColor: Colors.transparent, // 강조 효과 제거
+        splashFactory: NoSplash.splashFactory,
+        highlightColor: Colors.transparent,
       ),
       child: Container(
         height: navSize,
@@ -21,8 +30,8 @@ class ButtonBottomNav extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(80, 25, 80, 25),
           child: SizedBox(
             child: CustomButton.customButton(
-              text: "예약하기",
-              onPressed: (){},
+              text: buttonTitle,
+              onPressed: onPressedCallback,
               fontSize: 18,
               borderRadius: 5,
             ),
