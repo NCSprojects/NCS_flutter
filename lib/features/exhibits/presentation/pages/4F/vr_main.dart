@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ncs/app/theme/app_color.dart';
 import 'package:ncs/features/exhibits/presentation/widgets/exhibit_container_button.dart';
 
-class BigHistoryMain extends StatelessWidget {
-  const BigHistoryMain({super.key});
+class VrMain extends StatelessWidget {
+  const VrMain({super.key});
 
   @override
   Widget build(BuildContext context) {

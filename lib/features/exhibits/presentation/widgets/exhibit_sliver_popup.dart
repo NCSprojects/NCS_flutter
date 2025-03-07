@@ -12,7 +12,6 @@ class PopupContent extends StatelessWidget {
   final String description;
   final String mainText;
   final String subText;
-  final String imagePath;
 
   const PopupContent({
     Key? key,
@@ -22,12 +21,12 @@ class PopupContent extends StatelessWidget {
     required this.description,
     required this.mainText,
     required this.subText,
-    required this.imagePath,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final DraggableSheetCubit draggableCubit = context.read<DraggableSheetCubit>();
+    final DraggableSheetCubit draggableCubit =
+        context.read<DraggableSheetCubit>();
     final double fontSize = ScreenUtil.fontSize(18);
 
     return DraggableScrollableSheet(
@@ -39,9 +38,16 @@ class PopupContent extends StatelessWidget {
         return Material(
           color: Colors.transparent,
           child: Container(
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.1),
+                    blurRadius: 10,
+                    offset: const Offset(-4, -4),
+                  ),
+                ],
             ),
             child: SingleChildScrollView(
               controller: scrollController,
@@ -49,10 +55,11 @@ class PopupContent extends StatelessWidget {
                 padding: const EdgeInsets.all(10.0),
                 child: Column(
                   children: [
+                    const SizedBox(height: 5,),
                     NCSText(
-                      text: "예약하기",
+                      text: "예약현황",
                       fontSize: fontSize,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.w500,
                     ),
                     const SizedBox(height: 10),
                     Wrap(
@@ -61,12 +68,13 @@ class PopupContent extends StatelessWidget {
                       alignment: WrapAlignment.center,
                       children: List.generate(
                         reservationData.length < 4 ? reservationData.length : 4,
-                            (index) => ExhibitReservationBox(
+                        (index) => ExhibitReservationBox(
                           index: index,
                           time: reservationData[index]["time"],
                           title: reservationData[index]["title"],
                           currentSeat: reservationData[index]["currentSeat"],
                           maxSeat: reservationData[index]["maxSeat"],
+                          reservationData: reservationData,
                         ),
                       ),
                     ),

@@ -32,7 +32,6 @@ class BackspaceAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: Padding(
         padding: const EdgeInsets.only(top: 20),
         child: AppBar(
-          scrolledUnderElevation: 0,
           leading: Padding(
             padding: const EdgeInsets.only(left: 15),
             child: IconButton(
@@ -51,6 +50,7 @@ class BackspaceAppBar extends StatelessWidget implements PreferredSizeWidget {
           centerTitle: true, // 제목 중앙 정렬
           backgroundColor: AppColor.input,
           elevation: 0, // AppBar 자체의 그림자 제거
+          scrolledUnderElevation: 0,
         ),
       ),
     );

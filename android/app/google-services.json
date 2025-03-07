@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "937635031063",
+    "project_id": "ncsproject-f7880",
+    "storage_bucket": "ncsproject-f7880.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:937635031063:android:449f59278ff8c3a9ef9452",
+        "android_client_info": {
+          "package_name": "com.ncs.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCB0O_H39x0GJKL5LQld5KxVx-jr3hcZbA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

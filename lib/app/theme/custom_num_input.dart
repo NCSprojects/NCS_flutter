@@ -14,7 +14,6 @@ class CustomNumInput {
     EdgeInsetsGeometry contentPadding = const EdgeInsets.all(8.0),
     Color borderColor = Colors.transparent,
     Color backgroundColor = AppColor.input,
-    required void Function(String inputText) onChanged,
 
   }) {
     return TextFormField(
@@ -53,7 +52,6 @@ class CustomNumInput {
           borderSide: BorderSide(color: borderColor, width: 0.2),
         ),
       ),
-      validator: validator
     );
   }
 }

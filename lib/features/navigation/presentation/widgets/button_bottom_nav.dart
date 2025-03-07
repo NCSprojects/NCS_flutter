@@ -16,7 +16,7 @@ class ButtonBottomNav extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double navSize = ScreenUtil.heightPercentage(0.115);
+    final double navSize = ScreenUtil.heightPercentage(0.11);
 
     return Theme(
       data: Theme.of(context).copyWith(
@@ -25,7 +25,16 @@ class ButtonBottomNav extends StatelessWidget {
       ),
       child: Container(
         height: navSize,
-        color: Colors.white,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 10,
+              offset: const Offset(-4, -4),
+            ),
+          ],
+        ),
         child: Padding(
           padding: const EdgeInsets.fromLTRB(80, 25, 80, 25),
           child: SizedBox(

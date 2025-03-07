@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:ncs/app/theme/app_color.dart';
 import 'package:ncs/features/home/widgets/main_container_off.dart';
-
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -13,7 +13,13 @@ class HomePage extends StatelessWidget {
       home: Scaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: AppColor.back,
-        body: Center(child: MainContainerOff())
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(child: MainContainerOff()),
+            // TicketView(),
+          ],
+        ),
       ),
     );
   }

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 import 'package:ncs/app/theme/app_color.dart';
 import 'package:ncs/comm/setting/screen_util_setting.dart';
 import 'package:ncs/features/exhibits/presentation/bloc/swipe_cubit.dart';
+import 'package:ncs/features/exhibits/presentation/pages/4F/constellation_main.dart';
+import 'package:ncs/features/exhibits/presentation/pages/4F/video_main.dart';
+import 'package:ncs/features/exhibits/presentation/pages/4F/vr_main.dart';
 import 'package:ncs/features/exhibits/presentation/widgets/exhibit_card.dart';
 import 'package:ncs/features/exhibits/presentation/widgets/exhibit_guid_arrow.dart';
 
@@ -19,28 +23,52 @@ class InfiniteSwipeExhibitView extends StatelessWidget {
   Widget build(BuildContext context) {
     final double heightSize = ScreenUtil.heightPercentage(0.45);
     final List<Widget> exhibitCards = [
-      const Padding(
-        padding: EdgeInsets.all(10.0),
-        child: ExhibitCard(
-          imagePath: 'assets/icons/VR.svg',
-          title: "외계행성으로 떠나요!",
-          description: "VR로 진행되는 우주선 탐험 OX퀴즈와  우주쓰레기를 청소해요!",
+      Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const VrMain()),
+            );
+          },
+          child: const ExhibitCard(
+            imagePath: 'assets/icons/VR.svg',
+            title: "외계행성으로 떠나요!",
+            description: "VR로 진행되는 우주선 탐험 OX퀴즈와  우주쓰레기를 청소해요!",
+          ),
         ),
       ),
-      const Padding(
-        padding: EdgeInsets.all(10.0),
-        child: ExhibitCard(
-          imagePath: 'assets/icons/Video.svg',
-          title: "누워서 보는 영화관!",
-          description: "천체투영실에서 누워서 영화를 관람해요!\n",
+      Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const VideoMain()),
+            );
+            },
+            child: const ExhibitCard(
+            imagePath: 'assets/icons/Video.svg',
+            title: "누워서 보는 영화관!",
+            description: "천체투영실에서 누워서 영화를 관람해요!\n",
+          ),
         ),
       ),
-      const Padding(
-        padding: EdgeInsets.all(10.0),
-        child: ExhibitCard(
-          imagePath: "assets/icons/Constellation_story.svg",
-          title: "별자리 해설",
-          description: "계절 별자리는 어떤게 있을까? 우리 같이 알아보아요!",
+      Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const ConstellationMain()),
+            );
+          },
+          child: const ExhibitCard(
+            imagePath: "assets/icons/Constellation_story.svg",
+            title: "별자리 해설",
+            description: "계절 별자리는 어떤게 있을까? 우리 같이 알아보아요!",
+          ),
         ),
       ),
     ];

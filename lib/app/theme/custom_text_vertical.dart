@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ncs/app/theme/app_color.dart';
-import 'package:ncs/comm/setting/screen_util_setting.dart';
+import 'package:ncs/app/theme/custom_text_style.dart';
 
-class NCSText extends StatelessWidget {
+class VerticalText extends StatelessWidget {
   final String text;
   final Color color;
   final double fontSize;
@@ -13,7 +13,7 @@ class NCSText extends StatelessWidget {
   final double? spacing;
 
 
-  const NCSText({
+  const VerticalText({
     super.key,
     required this.text,
     required this.fontSize,
@@ -24,21 +24,11 @@ class NCSText extends StatelessWidget {
     this.overflow,
     this.spacing,
   });
-
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(
-        color: color,
-        fontFamily: "Pretendard",
-        fontSize: ScreenUtil.fontSize(fontSize),
-        fontWeight: fontWeight,
-        letterSpacing: spacing,
-      ),
-      textAlign: textAlign,
-      maxLines: maxLines,
-      overflow: overflow,
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: text.split("").map((char) => NCSText(text: char, fontSize: fontSize, fontWeight: fontWeight,)).toList(),
     );
   }
 }

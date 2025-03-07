@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ncs/app/theme/app_color.dart';
+import 'package:ncs/comm/widget/show_snack_bar.dart';
 import 'package:ncs/features/exhibits/presentation/bloc/draggable_sheet_cubit.dart';
 import 'package:ncs/features/exhibits/presentation/bloc/selection_cubit.dart';
 import 'package:ncs/features/exhibits/presentation/widgets/exhibit_container_style.dart';
 import 'package:ncs/features/exhibits/presentation/widgets/exhibit_sliver_popup.dart';
 import 'package:ncs/features/navigation/presentation/widgets/backspace_app_bar.dart';
-import 'package:ncs/features/navigation/presentation/widgets/button_bottom_nav.dart';
 import 'package:ncs/comm/setting/screen_util_setting.dart';
+import 'package:ncs/features/navigation/presentation/widgets/button_bottom_nav.dart';
+import 'package:ncs/features/reservations/presentation/bloc/count_cubit.dart';
 
 class ExhibitPopupView extends StatelessWidget {
   const ExhibitPopupView({
@@ -36,42 +38,50 @@ class ExhibitPopupView extends StatelessWidget {
     {"time": "14", "title": "VR", "currentSeat": "3", "maxSeat": "4"},
   ];
 
-  /// 예약하기 버튼 눌렀을 때 선택된 예약 박스 정보를 처리하는 함수
-  void handleReservation(BuildContext context) {
-    final int selectedIndex = context.read<ExhibitSelectionCubit>().state;
+  void handleReservation(BuildContext context, int selectedIndex) {
     if (selectedIndex < 0 || selectedIndex >= reservationData.length) {
       print("선택된 박스가 없습니다.");
+      showSnackBar(context, "시간을 선택해주세요.", AppColor.blue);
     } else {
       final selectedData = reservationData[selectedIndex];
+      int guardianCount = context.read<CounterCubit>().guardianCount;
+      int participantCount = context.read<CounterCubit>().participantCount;
+
       print("선택된 예약 정보:");
       print("시간: ${selectedData["time"]}시");
       print("전시 제목: ${selectedData["title"]}");
       print("좌석: ${selectedData["currentSeat"]}/${selectedData["maxSeat"]}석");
-      // 이후 예약 처리 로직 실행
+      print("예약 인원 수: ${guardianCount + participantCount} 명");
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final double popupHeightSize = ScreenUtil.heightPercentage(0.5);
+    final double popupHeightSize = ScreenUtil.heightPercentage(0.6);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: MultiBlocProvider(
         providers: [
           BlocProvider(create: (_) => ExhibitSelectionCubit()),
           BlocProvider(create: (_) => DraggableSheetCubit()),
+          BlocProvider(create: (_) => CounterCubit()),
         ],
         child: Builder(
           builder: (context) {
             return Scaffold(
-              bottomNavigationBar: ButtonBottomNav(
-                reservationData: reservationData,
-                buttonTitle: "예약하기",
-                onPressedCallback: () => handleReservation(context),
-              ),
-              appBar: const BackspaceAppBar(),
-              resizeToAvoidBottomInset: false,
               backgroundColor: AppColor.back,
+              extendBody: true,
+              appBar: const BackspaceAppBar(),
+              bottomNavigationBar: BlocBuilder<ExhibitSelectionCubit, int>(
+                builder: (context, selectedIndex) {
+                  return ButtonBottomNav(
+                    reservationData: reservationData,
+                    buttonTitle: "예약하기",
+                    onPressedCallback: () => handleReservation(context, selectedIndex),
+                  );
+                },
+              ),
               body: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -94,7 +104,6 @@ class ExhibitPopupView extends StatelessWidget {
                       description: description,
                       mainText: mainText,
                       subText: subText,
-                      imagePath: imagePath,
                     ),
                   ),
                 ],

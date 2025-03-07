@@ -68,6 +68,7 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget{
               ),
             ),
           ],
+          scrolledUnderElevation:0,
           elevation: 0, // AppBar 자체의 그림자 제거
         ),
       ),

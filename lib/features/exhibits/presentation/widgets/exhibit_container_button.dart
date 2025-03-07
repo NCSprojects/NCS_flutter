@@ -7,7 +7,7 @@ class ExhibitContainerButton extends StatelessWidget {
   const ExhibitContainerButton({
     super.key,
     required this.title,
-    required this.date,
+    required this.duration,
     required this.description,
     required this.mainText,
     required this.subText,
@@ -15,7 +15,7 @@ class ExhibitContainerButton extends StatelessWidget {
   });
 
   final String title;
-  final String date;
+  final String duration;
   final String description;
   final String mainText;
   final String subText;
@@ -27,7 +27,7 @@ class ExhibitContainerButton extends StatelessWidget {
       onTap: () {
         Get.to(() => ExhibitPopupView(
           title: title,
-          date: date,
+          date: duration,
           description: description,
           mainText: mainText,
           subText: subText,
@@ -36,7 +36,7 @@ class ExhibitContainerButton extends StatelessWidget {
       },
       child: ExhibitContainerStyle(
         title: title,
-        date: date,
+        date: duration,
         description: description,
         mainText: mainText,
         subText: subText,

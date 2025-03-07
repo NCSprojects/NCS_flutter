@@ -4,6 +4,7 @@ import 'package:ncs/app/theme/app_color.dart';
 import 'package:ncs/app/theme/custom_text_style.dart';
 import 'package:ncs/comm/setting/screen_util_setting.dart';
 import 'package:ncs/features/exhibits/presentation/bloc/selection_cubit.dart';
+import 'package:ncs/features/reservations/presentation/widget/reservation_widget.dart';
 
 class ExhibitReservationBox extends StatelessWidget {
   final int index;
@@ -11,36 +12,58 @@ class ExhibitReservationBox extends StatelessWidget {
   final String title;
   final String currentSeat;
   final String maxSeat;
+  final List<Map<String, dynamic>> reservationData;
 
   const ExhibitReservationBox({
-    super.key,
+    Key? key,
     required this.index,
     required this.time,
     required this.title,
     required this.currentSeat,
     required this.maxSeat,
-  });
+    required this.reservationData,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final double fontSize = ScreenUtil.fontSize(12);
     final double containerHeight = ScreenUtil.heightPercentage(0.07);
     final double containerWidth = ScreenUtil.widthPercentage(0.2);
+    final double reservationHeight = ScreenUtil.heightPercentage(0.3);
 
-    return BlocBuilder<ExhibitSelectionCubit, int>(
-      builder: (context, selectedIndex) {
-        bool isSelected = selectedIndex == index;
+    return GestureDetector(
+      onTap: () {
+        context.read<ExhibitSelectionCubit>().selectBox(index);
 
-        return GestureDetector(
-          onTap: () {
-            context.read<ExhibitSelectionCubit>().selectBox(index);
+        final bottomSheetController = Scaffold.of(context).showBottomSheet(
+              (context) {
+            return Container(
+              height: reservationHeight,
+              decoration: const BoxDecoration(
+                color: Colors.transparent,
+                borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+              ),
+              child: ReservationWidget(reservationData: reservationData),
+            );
           },
-          child: Container(
+          backgroundColor: Colors.transparent,
+        );
+
+        bottomSheetController.closed.then((_) {
+          if (context.mounted) {
+            context.read<ExhibitSelectionCubit>().selectBox(-1);
+          }
+        });
+      },
+      child: BlocBuilder<ExhibitSelectionCubit, int>(
+        builder: (context, selectedIndex) {
+          bool isSelected = selectedIndex == index;
+          return Container(
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.all(Radius.circular(5)),
               border: Border.all(
                 color: isSelected ? AppColor.skyBlue : Colors.transparent,
-                width: isSelected ? 2 : 2,
+                width: 2,
               ),
             ),
             child: Padding(
@@ -86,9 +109,9 @@ class ExhibitReservationBox extends StatelessWidget {
                 ],
               ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }
