@@ -88,9 +88,13 @@ class MyApp extends StatelessWidget {
       create: (_) => BottomNavCubit(),
       child: GetMaterialApp(
         title: 'NCS-Project',
-        initialRoute: '/home',
-        routes: NavigatorNamed().named,
         debugShowCheckedModeBanner: false,
+        initialRoute: '/home',
+        getPages: NavigatorNamed.getPages,
+        builder: (context, child) {
+          ScreenUtil.init(context);
+          return child!;
+        },
       ),
     );
   }

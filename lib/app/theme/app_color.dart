@@ -12,6 +12,7 @@ abstract class AppColor {
   static const outLine = Color(0xFFDADADA);
   static const gray = Color(0xFF2E2E2D);
   static const red = Color(0xFFA50034);
+  static const pink = Color(0xFFFF7070);
 }
 
 const test = Color(0xFF000000);

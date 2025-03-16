@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'package:ncs/app/theme/app_color.dart';
+import 'package:ncs/features/home/presentation/pages/ticket_view.dart';
 import 'package:ncs/features/home/widgets/main_container_off.dart';
 
 class HomePage extends StatelessWidget {
@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Center(child: MainContainerOff()),
-            // TicketView(),
+            TicketView(),
           ],
         ),
       ),

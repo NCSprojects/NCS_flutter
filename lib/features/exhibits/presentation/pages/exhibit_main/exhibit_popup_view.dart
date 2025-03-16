@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 import 'package:ncs/app/theme/app_color.dart';
 import 'package:ncs/comm/widget/show_snack_bar.dart';
 import 'package:ncs/features/exhibits/presentation/bloc/draggable_sheet_cubit.dart';
@@ -10,6 +11,7 @@ import 'package:ncs/features/navigation/presentation/widgets/backspace_app_bar.d
 import 'package:ncs/comm/setting/screen_util_setting.dart';
 import 'package:ncs/features/navigation/presentation/widgets/button_bottom_nav.dart';
 import 'package:ncs/features/reservations/presentation/bloc/count_cubit.dart';
+import 'package:ncs/features/reservations/presentation/page/reservation_check_page.dart';
 
 class ExhibitPopupView extends StatelessWidget {
   const ExhibitPopupView({
@@ -78,7 +80,10 @@ class ExhibitPopupView extends StatelessWidget {
                   return ButtonBottomNav(
                     reservationData: reservationData,
                     buttonTitle: "예약하기",
-                    onPressedCallback: () => handleReservation(context, selectedIndex),
+                    onPressedCallback: () {
+                      handleReservation(context, selectedIndex);
+                      Get.off(() => const ReservationCheckPage());
+                    },
                   );
                 },
               ),

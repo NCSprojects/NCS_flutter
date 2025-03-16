@@ -5,6 +5,7 @@ import 'package:ncs/app/theme/app_color.dart';
 import 'package:ncs/app/theme/custom_text_style.dart';
 import 'package:ncs/app/theme/custom_text_vertical.dart';
 import 'package:ncs/comm/setting/screen_util_setting.dart';
+import 'package:ncs/features/home/presentation/pages/ticket_information_page.dart';
 
 class Ticket extends StatelessWidget {
   const Ticket({super.key});
@@ -144,8 +145,7 @@ class Ticket extends StatelessWidget {
         ),
       ),
       onTap: () {
-        print("확인");
-        Get.back();
+        Get.to(const TicketInformationPage());
       },
     );
   }

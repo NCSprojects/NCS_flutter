@@ -15,8 +15,8 @@ class CommonBottomNav extends StatelessWidget {
 
   final List<Widget> _pages = const [
     HomePage(),
-    CosmosMain(),
     BigHistoryMain(),
+    CosmosMain(),
     ScopeMain(),
   ];
 

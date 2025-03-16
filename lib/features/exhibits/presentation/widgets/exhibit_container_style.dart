@@ -33,81 +33,81 @@ class ExhibitContainerStyle extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Container(
+        padding: const EdgeInsets.all(10.0),
         width: containerWidth,
         height: containerHeight,
         decoration: NCSshadow.custom(
           color: Colors.white,
           borderRadius: 15,
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  NCSText(
-                    text: date, // 날짜
-                    fontSize: 9,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  const SizedBox(height: 2),
-                  SizedBox(
-                    width: a4Width,
-                    height: a4Height,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(5),
-                      child: Image.asset(
-                        imagePath,
-                        fit: BoxFit.cover,
-                      ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            const SizedBox(width: 10,),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                NCSText(
+                  text: date, // 날짜
+                  fontSize: 9,
+                  fontWeight: FontWeight.w600,
+                ),
+                const SizedBox(height: 2),
+                SizedBox(
+                  width: a4Width,
+                  height: a4Height,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(5),
+                    child: Image.asset(
+                      imagePath,
+                      fit: BoxFit.cover,
                     ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(width: 20),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 15, 0, 5),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      NCSText(
+                        text: title, // 큰 제목
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      NCSText(
+                        text: description, // 간단 설명
+                        fontSize: 8,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ],
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      NCSText(
+                        text: mainText, // 메인 텍스트
+                        fontSize: 10,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      NCSText(
+                        text: subText, // 서브 텍스트
+                        fontSize: 10,
+                        fontWeight: FontWeight.w300,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
                   ),
                 ],
               ),
-              const SizedBox(width: 20),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 15, 0, 5),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        NCSText(
-                          text: title, // 큰 제목
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                        ),
-                        NCSText(
-                          text: description, // 간단 설명
-                          fontSize: 8,
-                          fontWeight: FontWeight.w300,
-                        ),
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        NCSText(
-                          text: mainText, // 메인 텍스트
-                          fontSize: 10,
-                          fontWeight: FontWeight.w600,
-                        ),
-                        NCSText(
-                          text: subText, // 서브 텍스트
-                          fontSize: 10,
-                          fontWeight: FontWeight.w300,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
