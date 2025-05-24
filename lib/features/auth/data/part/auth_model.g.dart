@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'auth_model.dart';
+part of '../auth_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
@@ -15,33 +15,18 @@ Map<String, dynamic> _$AuthRequestToJson(AuthRequest instance) =>
       'randomId': instance.randomId,
     };
 
-AuthWrapperResponse _$AuthWrapperResponseFromJson(Map<String, dynamic> json) =>
-    AuthWrapperResponse(
-      status: json['status'] as String? ?? '',
-      code: (json['code'] as num?)?.toInt() ?? 0,
-      message: json['message'] as String? ?? '',
-      data: json['data'] == null
-          ? null
-          : AuthData.fromJson(json['data'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$AuthWrapperResponseToJson(
-        AuthWrapperResponse instance) =>
-    <String, dynamic>{
-      'status': instance.status,
-      'code': instance.code,
-      'message': instance.message,
-      'data': instance.data,
-    };
-
 AuthData _$AuthDataFromJson(Map<String, dynamic> json) => AuthData(
       accessToken: json['accessToken'] as String,
       refreshToken: json['refreshToken'] as String,
+      guardians: json['guardians'] as int,
+      visitors: json['visitors'] as int,
     );
 
 Map<String, dynamic> _$AuthDataToJson(AuthData instance) => <String, dynamic>{
       'accessToken': instance.accessToken,
       'refreshToken': instance.refreshToken,
+      'guardians' : instance.guardians,
+      'visitors' : instance.visitors
     };
 
 TokenReissueWrapperResponse _$TokenReissueWrapperResponseFromJson(

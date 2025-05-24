@@ -19,7 +19,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(AuthLoading());
     try {
       final data = await repository.verifyAuthCode(event.randomId);
-      emit(AuthSuccess(accessToken: data.accessToken));
+      emit(AuthSuccess(
+          accessToken: data.accessToken,
+          refreshToken: data.refreshToken,
+          guardians: data.guardians,
+          visitors: data.visitors
+      ));
     } on DioError catch (e) {
       emit(AuthFailure(error: e.response?.data["error"] ?? "서버 오류 발생"));
     } catch (e) {
@@ -32,7 +37,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(AuthLoading());
     try {
       final accessToken = await repository.reissueAccessToken(event.refreshToken);
-      emit(AuthSuccess(accessToken: accessToken));
+      emit(AuthReissue(accessToken: accessToken));
     } on DioError catch (e) {
       emit(AuthFailure(error: e.response?.data["error"] ?? "서버 오류 발생"));
     } catch (e) {

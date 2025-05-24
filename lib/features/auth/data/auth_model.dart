@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'auth_model.g.dart';
+part 'part/auth_model.g.dart';
 
 @JsonSerializable()
 class AuthRequest {
@@ -15,38 +15,21 @@ class AuthRequest {
 }
 
 @JsonSerializable()
-class AuthWrapperResponse {
-  @JsonKey(defaultValue: "")
-  final String status;
-  @JsonKey(defaultValue: 0)
-  final int code;
-  @JsonKey(defaultValue: "")
-  final String message;
-  // 오류 응답 시 data 필드가 없을 수 있으므로 nullable 처리
-  final AuthData? data;
-
-  AuthWrapperResponse({
-    required this.status,
-    required this.code,
-    required this.message,
-    this.data,
-  });
-
-  factory AuthWrapperResponse.fromJson(Map<String, dynamic> json) =>
-      _$AuthWrapperResponseFromJson(json);
-  Map<String, dynamic> toJson() => _$AuthWrapperResponseToJson(this);
-}
-
-@JsonSerializable()
 class AuthData {
   @JsonKey(name: "accessToken")
   final String accessToken;
   @JsonKey(name: "refreshToken")
   final String refreshToken;
+  @JsonKey(name: "guardians") //보호자
+  final int guardians;
+  @JsonKey(name: "visitors")
+  final int visitors;
 
   AuthData({
     required this.accessToken,
     required this.refreshToken,
+    required this.guardians,
+    required this.visitors
   });
 
   factory AuthData.fromJson(Map<String, dynamic> json) =>
@@ -62,7 +45,6 @@ class TokenReissueWrapperResponse {
   final int code;
   @JsonKey(defaultValue: "")
   final String message;
-  // 오류 응답 시 data가 없을 수 있으므로 nullable 처리
   final TokenData? data;
 
   TokenReissueWrapperResponse({

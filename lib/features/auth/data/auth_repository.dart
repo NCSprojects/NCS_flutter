@@ -7,19 +7,22 @@ class AuthRepository {
   AuthRepository({required this.authApi});
 
   Future<AuthData> verifyAuthCode(String randomId) async {
-    final response = await authApi.verifyAuthCode(AuthRequest(randomId: randomId));
-    if (response.data == null) {
-      // data 필드가 없으면 오류 메시지로 예외 발생
-      throw Exception(response.message.isNotEmpty ? response.message : "서버 오류 발생");
-    }
-    return response.data!;
+    return await authApi.verifyAuthCode(
+      AuthRequest(randomId: randomId),
+    );
   }
 
   Future<String> reissueAccessToken(String refreshToken) async {
-    final response = await authApi.reissueToken("Bearer $refreshToken");
-    if (response.data == null) {
-      throw Exception(response.message.isNotEmpty ? response.message : "서버 오류 발생");
+    final wrapper =
+    await authApi.reissueToken("Bearer $refreshToken");
+
+    if (wrapper.data == null) {
+      final msg = wrapper.message.isNotEmpty
+          ? wrapper.message
+          : "서버 오류 발생";
+      throw Exception(msg);
     }
-    return response.data!.accessToken;
+
+    return wrapper.data!.accessToken;
   }
 }

@@ -13,3 +13,5 @@ class ReissueTokenEvent extends AuthEvent {
 
   ReissueTokenEvent({required this.refreshToken});
 }
+
+class AuthLogoutRequested extends AuthEvent {}

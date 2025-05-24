@@ -26,8 +26,8 @@ class Ticket extends StatelessWidget {
           child: Stack(
             children: [
               Positioned(
-                top: 11,
-                left: 14,
+                top: 10,
+                left: 8,
                 child: SvgPicture.asset(
                   'assets/icons/ticket_back.svg',
                   color: Colors.black.withOpacity(0.05),

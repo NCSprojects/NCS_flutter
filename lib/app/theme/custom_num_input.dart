@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:ncs/app/theme/app_color.dart';
 import 'package:ncs/app/theme/custom_text_style.dart';
 import 'package:ncs/comm/setting/screen_util_setting.dart';
@@ -10,15 +11,16 @@ class CustomNumInput {
     required String text,
     required double fontSize,
     required FontWeight fontWeight,
+    List<TextInputFormatter>?  inputFormatters,
     String? Function(String?)? validator,
     EdgeInsetsGeometry contentPadding = const EdgeInsets.all(8.0),
     Color borderColor = Colors.transparent,
     Color backgroundColor = AppColor.input,
-
   }) {
     return TextFormField(
       controller: controller,
       keyboardType: TextInputType.number,
+      inputFormatters: inputFormatters,
       style: TextStyle(
         fontSize: ScreenUtil.fontSize(fontSize),
         color: AppColor.blue,

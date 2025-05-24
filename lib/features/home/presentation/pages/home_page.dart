@@ -16,8 +16,7 @@ class HomePage extends StatelessWidget {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Center(child: MainContainerOff()),
-            TicketView(),
+            Expanded(child: MainContainerOff()),
           ],
         ),
       ),

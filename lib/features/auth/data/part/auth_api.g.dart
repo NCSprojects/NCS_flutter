@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'auth_api.dart';
+part of '../auth_api.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -14,7 +14,7 @@ class _AuthApi implements AuthApi {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'http://172.30.1.24:3000/auth';
+    baseUrl ??= 'http://localhost:3000/auth';
   }
 
   final Dio _dio;
@@ -24,13 +24,13 @@ class _AuthApi implements AuthApi {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<AuthWrapperResponse> verifyAuthCode(AuthRequest request) async {
+  Future<AuthData> verifyAuthCode(AuthRequest request) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(request.toJson());
-    final _options = _setStreamType<AuthWrapperResponse>(Options(
+    final _options = _setStreamType<AuthData>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -47,9 +47,9 @@ class _AuthApi implements AuthApi {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late AuthWrapperResponse _value;
+    late AuthData _value;
     try {
-      _value = AuthWrapperResponse.fromJson(_result.data!);
+      _value = AuthData.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

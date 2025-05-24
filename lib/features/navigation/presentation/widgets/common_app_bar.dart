@@ -12,7 +12,7 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget{
 
   @override
   Size get preferredSize {
-    final double calculatedHeight = ScreenUtil.heightPercentage(0.15);
+    final double calculatedHeight = ScreenUtil.heightPercentage(0.16);
     return Size.fromHeight(calculatedHeight);
   }
 
